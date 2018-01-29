@@ -15,6 +15,7 @@ app.use(morgan('tiny'))
 app.use(morgan(':data'))
 app.use(bodyParser.json())
 app.use(cors())
+app.use(express.static('build'))
 
 let persons = [
     {
@@ -38,6 +39,11 @@ let persons = [
         id: 4
     }
 ]
+
+
+app.get('/', (req, res) => {
+    res.send('<h1>Hello World!</h1>')
+})
 
 app.get('/api/persons', (req, res) => {
     res.json(persons)
